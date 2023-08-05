@@ -1,0 +1,99 @@
+<form
+  [formGroup]="temparatureInputForm"
+  (ngSubmit)="onSubmit(temparatureInputForm.value)"
+>
+  <mat-card class="temparature-input-card">
+    <mat-card-header>
+      <mat-card-title>Temparature Inputs</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- Minimum Temparature Input -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label for="minTemp">Minium Temparature</mat-label>
+            <input
+              placeholder="Minimum Temparature"
+              type="number"
+              matInput
+              formControlName="minTemp"
+              autocomplete="off"
+            />
+            <mat-error
+              *ngIf="
+                temparatureInputForm.controls['minTemp'].hasError('required')
+              "
+            >
+              Minimum Temparature is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Maximum Temparature Input -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label for="maxTemp">Maximum Temparature</mat-label>
+            <input
+              placeholder="Maximum Temparature"
+              type="number"
+              matInput
+              formControlName="maxTemp"
+              autocomplete="off"
+            />
+            <mat-error
+              *ngIf="
+                temparatureInputForm.controls['maxTemp'].hasError('required')
+              "
+            >
+              Maximum Temparature is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <!-- Current Temparature Input -->
+      <div class="row">
+        <div class="col">
+          <mat-form-field appearance="outline">
+            <mat-label for="currentTemp">Current Temparature</mat-label>
+            <input
+              placeholder="Current Temparature"
+              type="number"
+              matInput
+              formControlName="currentTemp"
+              autocomplete="off"
+            />
+            <mat-error
+              *ngIf="
+                temparatureInputForm.controls['currentTemp'].hasError(
+                  'required'
+                )
+              "
+            >
+              Current Temparature is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+
+    <!-- Submit Button -->
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        class="button"
+        color="primary"
+        type="submit"
+        [disabled]="!temparatureInputForm.valid"
+      >
+        Submit
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+<app-display-guage
+  [temparatureInputForm]="temparatureInputForm.value"
+></app-display-guage>
