@@ -1,7 +1,4 @@
-<form
-  [formGroup]="temparatureInputForm"
-  (ngSubmit)="onSubmit(temparatureInputForm.value)"
->
+<form [formGroup]="temparatureInputForm" (ngSubmit)="onSubmit()">
   <mat-card class="temparature-input-card">
     <mat-card-header>
       <mat-card-title>Temparature Inputs</mat-card-title>
@@ -95,5 +92,5 @@
 </form>
 
 <app-display-guage
-  [temparatureInputForm]="temparatureInputForm.value"
+  [temparatureInputForm]="temparatureInputFormObservable$"
 ></app-display-guage>

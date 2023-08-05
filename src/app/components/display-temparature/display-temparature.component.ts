@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 import { iTemparatureInputs } from 'src/app/models/temparature-inputs.model';
 
 @Component({
@@ -9,7 +10,10 @@ import { iTemparatureInputs } from 'src/app/models/temparature-inputs.model';
 })
 export class DisplayTemparatureComponent implements OnInit {
   temparatureInputForm: FormGroup;
-  submitted: boolean = false;
+  temparatureInputFormSubject$ = new Subject<FormGroup>();
+  temparatureInputFormObservable$ =
+    this.temparatureInputFormSubject$.asObservable();
+  // submitted: boolean = false;
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
@@ -33,6 +37,11 @@ export class DisplayTemparatureComponent implements OnInit {
   }
 
   onSubmit(value: iTemparatureInputs): void {
-    this.submitted = true;
+    this.temparatureInputFormSubject$.next(this.temparatureInputForm);
+  }
+
+  onDestroy(): void {
+    this.temparatureInputFormSubject$.next(this.temparatureInputForm);
+    this.temparatureInputFormSubject$.complete();
   }
 }
