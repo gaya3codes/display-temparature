@@ -1,4 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { iTemparatureInputs } from 'src/app/models/temparature-inputs.model';
 
 @Component({
@@ -6,13 +12,15 @@ import { iTemparatureInputs } from 'src/app/models/temparature-inputs.model';
   templateUrl: './display-guage.component.html',
   styleUrls: ['./display-guage.component.scss'],
 })
-export class DisplayGuageComponent implements OnInit {
+export class DisplayGuageComponent implements OnInit, OnChanges {
   temp: any;
-  @Input() temparatureInputForm: iTemparatureInputs;
+  angleNeedToRotate: number;
+  @Input() temparatureInputs: iTemparatureInputs;
+
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.temparatureInputForm);
+    console.log(this.temparatureInputs);
   }
 
   displayTemparature(
@@ -20,12 +28,18 @@ export class DisplayGuageComponent implements OnInit {
     maxTemp: number,
     currentTemp: number
   ): void {
-    const intervals = Math.floor(maxTemp - minTemp);
+    const intervals = maxTemp - minTemp;
     const angleForEachInterval = 270 / intervals;
-    const angleNeedToRotate =
-      angleForEachInterval * Math.floor(currentTemp - minTemp);
+    this.angleNeedToRotate = Math.round(
+      angleForEachInterval * (currentTemp - minTemp)
+    );
     document.getElementById('pointer').style.transform = `rotate(${
-      angleNeedToRotate - 45
+      this.angleNeedToRotate - 45
     }deg)`;
+  }
+
+  ngOnChanges(): void {
+    const temp = this.temparatureInputs;
+    this.displayTemparature(temp.minTemp, temp.maxTemp, temp.currentTemp);
   }
 }

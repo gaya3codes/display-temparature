@@ -1,35 +1,37 @@
-html {
-  display: grid;
-  min-height: 100%;
-  background: blue;
+.header {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  text-align: center;
+  font-weight: 500;
+  margin: 15px 15px 15px 15px;
 }
-body {
-  background-color: yellow;
+.separator {
+  display: flex;
+  height: 40px;
+}
+
+.display-guage {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  border: 5px solid black;
+  align-items: flex-end;
 }
 
-.item {
-  margin: 10px;
+.min {
+  display: flex;
+  border: 1px solid black;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 40px;
+  width: 5px;
+  background: violet;
+  transform-origin: top left;
+  transform: translateX(33px) translateY(9px) rotate(45deg);
 }
 
-.input-wrapper {
-  flex-direction: row;
-}
-
-.parent {
-  /* display: flex;
-      justify-content: center;
-      align-items: center; */
-  border: 5px solid black;
-  background-color: aqua;
-}
-
-.child1 {
-  border: 5px solid black;
+.guage {
+  border: 5px solid white;
+  border: 1px solid black;
   height: 200px;
   width: 200px;
   background-color: violet;
@@ -38,42 +40,27 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  /* display: flex;
-      justify-content: center;
-      align-items: center; */
 }
-.guage {
-  height: 500px;
-  width: 500px;
-  background-color: violet;
-  border-radius: 50%;
-}
+
 .pointer {
   background: white;
   width: 100px;
   height: 5px;
   transform-origin: right;
   transform: rotate(-45deg);
-  /* height: 5px;
-      width: 100px;
-      background: white;
-      transform-origin: bottom; */
-  /* display: flex;
-      justify-content: center;
-      align-self: center; */
-} /*
-    .child2 {
-      display: flex;
-    }
-    .min {
-      height: 40px;
-      width: 5px;
-      background: violet;
-    }
-    .max {
-      height: 40px;
-      width: 5px;
-      background: violet;
-      display: flex;
-      align-items: flex-end;
-    } */
+}
+.max {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  height: 40px;
+  width: 5px;
+  background: violet;
+  border: 1px solid black;
+  transform-origin: top right;
+  transform: translateY(9px) translateX(-33px) rotate(-45deg);
+}
+.footer {
+  text-align: center;
+  margin: 15px;
+}
