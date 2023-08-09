@@ -25,6 +25,8 @@ This component contains: - An input form to capture the minimum and maximum temp
 ## DisplayGuageComponent
 
 - The child component - DisplayGuageComponent receives the formInputs on submission and uses them to calculate the angle needed to rotate based on the inputs provided.
+- It contains a guage to display the temparature and its number beneath the guage.
+- It contains two bars to represent the min and max boundaries for the guage. Any temparature range is shown in between these boundaries in the guage.
 - The child component can also receive the data using subjects in Service file from the parent component. Keeping the re-usability of the component in mind, I avoided using too many couplings considering the size and scope of the application.
 
 ## Technologies
