@@ -19,9 +19,7 @@ export class DisplayGuageComponent implements OnInit, OnChanges {
 
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.temparatureInputs);
-  }
+  ngOnInit(): void {}
 
   displayTemparature(
     minTemp: number,
